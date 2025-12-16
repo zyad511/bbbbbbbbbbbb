@@ -4,71 +4,71 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>SMRHACK | هكر روبلوكس</title>
-<!-- خط عربي من Google Fonts -->
+<!-- خط عربي أنيق -->
 <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@700&display=swap" rel="stylesheet" />
 <style>
-/* خلفية متحركة باستخدام تدرج ألوان */
+/* خلفية متحركة بشكل متدرج وجميل */
 body {
   margin: 0;
   font-family: 'Amiri', serif;
   background: linear-gradient(-45deg, #0f2027, #203a43, #2c5364, #1f1f1f);
   background-size: 400% 400%;
-  animation: gradientAnimation 15s ease infinite;
+  animation: gradientBackground 20s ease infinite;
   color: #fff;
   line-height: 1.6;
   overflow-x: hidden;
 }
 
-/* حركة تدرج الألوان للخلفية */
-@keyframes gradientAnimation {
-  0% {background-position: 0% 50%;}
-  50% {background-position: 100% 50%;}
-  100% {background-position: 0% 50%;}
+/* حركة الخلفية */
+@keyframes gradientBackground {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* تأثير متحرك على اسم الموقع */
-@keyframes colorCycle {
-  0% { color: #00ffff; }
-  25% { color: #ff4d4d; }
-  50% { color: #ffff00; }
-  75% { color: #00ffff; }
-  100% { color: #00ffff; }
-}
-
-header {
-  background-color: rgba(31, 31, 31, 0.7);
-  padding: 30px 20px;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
+/* عنوان الموقع اسم متحرك وملون */
 header h1 {
-  font-size: 4em;
+  font-size: 5em;
   font-weight: bold;
   margin: 0;
   font-family: 'Amiri', serif;
-  animation: colorCycle 10s infinite;
-  letter-spacing: 5px;
-  /* تأثير لمسي: تلاشي ببطء عند التحميل */
-  opacity: 0;
-  animation: fadeIn 2s forwards;
+  cursor: pointer;
+  text-align: center;
+  padding: 50px 20px;
+  /* تلوين متغير */
+  animation: colorCycle 10s infinite, moveGradient 12s infinite alternate;
+  background: linear-gradient(45deg, #ff6ec4, #7873f5, #00f2fe, #ff0099);
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* تفاعلات لمسية */
+  transition: transform 0.3s, text-shadow 0.3s, filter 0.3s;
 }
-header p {
-  font-size: 1.2em;
-  margin-top: 10px;
-  color: #ccc;
-  opacity: 0;
-  animation: fadeIn 2s 1s forwards;
+header h1:hover {
+  transform: scale(1.2) rotate(2deg);
+  text-shadow: 0 0 20px #00ffff, 0 0 30px #ff00ff;
+  filter: brightness(1.2);
+}
+header h1:active {
+  transform: scale(1.3) rotate(5deg);
+  text-shadow: 0 0 40px #fff, 0 0 60px #00ffff;
+  filter: brightness(1.4);
 }
 
-/* تأثير لمسي: تلاشي وظهور تدريجي */
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
+/* تغيير ألوان النص بشكل متتابع */
+@keyframes colorCycle {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-/* تأثير على المدخلات */
+/* حركة تدرج لاسم الموقع */
+@keyframes moveGradient {
+  0% { background-position: 0% 50%; }
+  100% { background-position: 600% 50%; }
+}
+
+/* بقية التصميم عادي للصفحات */
 .search-container {
   margin: 30px auto;
   max-width: 700px;
@@ -82,13 +82,12 @@ input[type="text"] {
   font-size: 1.1em;
   outline: none;
   box-shadow: 0 8px 16px rgba(0,0,0,0.3);
-  transition: all 0.3s ease, box-shadow 0.3s ease;
+  transition: all 0.3s ease;
 }
 input[type="text"]:focus {
   box-shadow: 0 12px 20px rgba(0,0,0,0.4);
   outline: none;
   border: 2px solid #00ffff;
-  /* تأثير لمسي: تكبير بسيط عند التركيز */
   transform: scale(1.02);
 }
 
@@ -100,20 +99,20 @@ input[type="text"]:focus {
   padding: 30px 20px;
 }
 .file-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255,255,255,0.05);
   padding: 25px;
   border-radius: 20px;
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
+  transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s, filter 0.3s;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* تأثير لمسي: تغيير لون الخلفية عند المرور */
 }
 .file-card:hover {
   transform: scale(1.05);
   box-shadow: 0 12px 30px rgba(0,0,0,0.4);
   background-color: rgba(255,255,255,0.1);
+  filter: brightness(1.1);
 }
 .file-title {
   font-size: 1.4em;
@@ -123,7 +122,6 @@ input[type="text"]:focus {
   font-weight: 700;
   transition: color 0.3s, transform 0.3s;
 }
-/* تأثير لمسي: تغير لون النص وتحرك بسيط عند المرور */
 .file-title:hover {
   color: #ff4d4d;
   transform: translateY(-3px);
@@ -137,7 +135,7 @@ input[type="text"]:focus {
   border-radius: 50px;
   font-weight: 700;
   text-decoration: none;
-  transition: all 0.3s ease, box-shadow 0.3s;
+  transition: all 0.3s ease;
 }
 .download-link {
   background-color: #00ffff;
@@ -181,7 +179,6 @@ input[type="text"]:focus {
   border-radius: 50%;
   margin-right: 15px;
   border: 2px solid #00ffff;
-  /* تأثير لمسي: انزلاق بسيط عند التحميل */
   opacity: 0;
   animation: slideIn 1s forwards;
 }
@@ -190,12 +187,12 @@ input[type="text"]:focus {
   color: #00ffff;
   font-weight: bold;
 }
-/* تأثير لمسي: نبض */
+/* نبض */
 @keyframes pulse {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.1); }
 }
-/* تأثير انزلاقي لعناصر */
+/* انزلاق */
 @keyframes slideIn {
   from { transform: translateX(-50px); opacity: 0; }
   to { transform: translateX(0); opacity: 1; }
@@ -210,9 +207,14 @@ footer {
   font-size: 1em;
   color: #aaa;
   letter-spacing: 1px;
-  /* تأثير لمسي: تلاشي تدريجي */
   opacity: 0;
   animation: fadeIn 2s 1s forwards;
+}
+
+/* تفاعلات لمسية إضافية على العنوان */
+header h1:active {
+  transform: scale(1.3) rotate(10deg);
+  box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff inset;
 }
 </style>
 </head>
@@ -220,7 +222,7 @@ footer {
 
 <header>
   <h1>SMR</h1>
-  <p>هاك روبلوكس لجميع الاجهزه قريبا سكربتات...</p>
+  <p style="text-align:center;">هاك روبلوكس لجميع الاجهزه قريبا سكربتات...</p>
 </header>
 
 <div class="search-container">
@@ -228,18 +230,18 @@ footer {
 </div>
 
 <div class="file-grid" id="fileGrid">
-  <!-- ملفات التنزيل مع روابط مباشرة -->
+  <!-- ملفات التنزيل -->
   <div class="file-card" data-title="ايفون iOS" data-tags="ipa">
     <div class="file-title">roblox iOS (ipa)</div>
     <a class="download-link" href="https://www.mediafire.com/file/zzumb8hua61h1p6/SMR-Delta-2.701.966.ipa/file?dkey=6w7qlsph0vp&r=100" target="_blank" download>تحميل</a>
     <button class="direct-download-btn" style="display:none;" onclick="startDownload('https://ipalinks.ru/wh/UMqAgylaBo')">تحميل مباشر</button>
   </div>
-  <div class="file-card" data-title=" أندرويد" data-tags="apk">
+  <div class="file-card" data-title="أندرويد" data-tags="apk">
     <div class="file-title">روبلوكس أندرويد (SMR)</div>
     <a class="download-link" href="https://download2433.mediafire.com/y8ky7hzydxtgz3pDOCkkWYc0kdgdR2iTU8gackBrfCwNemQF6uFjpmqI4AKyrUE840iuiud4rhFuHXOrvpkEuTBDahIDG8fFTwyYtNKGQlgssg4Ldx7ABHmVoSInH8RMGpRbnCzvlAhpihWqQPyElXpoXd48tco6Mcf0-rrx3wQxuw/uon4t3fgubd4die/SMR-Delta-2.701.966.apk" target="_blank" download>تحميل</a>
   </div>
   <div class="file-card" data-title="روبلوكس ويندوز" data-tags="exe">
-    <div class="file-title"> Windows (SMR)</div>
+    <div class="file-title">Windows (SMR)</div>
     <a class="download-link" href="https://download851.mediafire.com/m56qemdcpfhgufj49MXEijdUWMBEogMy-nUFjDtCMs2XOYcd8GSPGb7BFBGtnOjGKprt3M27VF_fu3uHKBelBGsRvwyOhr6ak-aJ2RbL-gGzp0PA7I8B5jk6l9lJOfN6xDdX7mgS9tFkvA7s0H_XAIoaRizt2i-b5JpxYsYfL58KTA/e409ifspdaf2yfx/SMR-Xeno-v1.3.10.zip" target="_blank" download>تحميل</a>
   </div>
 </div>
@@ -250,27 +252,26 @@ footer {
     <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" alt="ديسكورد" />
     <span>نورنا سيرفر الديسكورد</span>
   </div>
-  <div class="social-icons">
-    <a href="https://discord.gg/CdbyHxmFth" target="_blank">
+  <div class="social-icons" style="margin-top:20px;">
+    <a href="https://discord.gg/CdbyHxmFth" target="_blank" style="margin:10px;">
       <img src="https://cdn-icons-png.flaticon.com/512/2111/2111370.png" width="60" height="60" alt="ديسكورد" />
-      <span>انضم إلى السيرفر</span>
     </a>
-    <a href="https://www.youtube.com/@SMR_3" target="_blank">
+    <a href="https://www.youtube.com/@SMR_3" target="_blank" style="margin:10px;">
       <img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png" width="60" height="60" alt="يوتيوب" />
-      <span>يوتيوب</span>
     </a>
-    <a href="https://www.tiktok.com/@smr_ha" target="_blank">
+    <a href="https://www.tiktok.com/@smr_ha" target="_blank" style="margin:10px;">
       <img src="https://cdn-icons-png.flaticon.com/512/3046/3046122.png" width="60" height="60" alt="تيك توك" />
-      <span>تيك توك</span>
     </a>
   </div>
 </div>
 
+<!-- التذييل -->
 <footer>
   &copy; 2025 SMR. جميع الحقوق محفوظة.
 </footer>
 
 <script>
+// وظيفة البحث
 function searchFiles() {
   const input = document.getElementById('searchInput').value.toLowerCase();
   const files = document.getElementById('fileGrid').getElementsByClassName('file-card');
@@ -285,6 +286,7 @@ function searchFiles() {
   });
 }
 
+// وظيفة التحميل المباشر
 function startDownload(fileUrl) {
   const link = document.createElement('a');
   link.href = fileUrl;
@@ -294,14 +296,14 @@ function startDownload(fileUrl) {
   document.body.removeChild(link);
 }
 
-// إظهار زر "تحميل مباشر" فقط على أجهزة الآيفون
+// إظهار زر التحميل المباشر فقط لأجهزة الآيفون
 window.onload = function() {
   const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
-  const buttons = document.getElementsByClassName('direct-download-btn');
+  const btns = document.getElementsByClassName('direct-download-btn');
   if (isIOS) {
-    for (let btn of buttons) { btn.style.display = 'inline-block'; }
+    for (let btn of btns) { btn.style.display = 'inline-block'; }
   } else {
-    for (let btn of buttons) { btn.style.display = 'none'; }
+    for (let btn of btns) { btn.style.display = 'none'; }
   }
 }
 </script>
